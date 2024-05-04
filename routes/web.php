@@ -15,6 +15,7 @@ use App\Http\Controllers\RouteController;
 */
 
 Route::get('/', [RouteController::class, 'accueil'])->name('accueil');
+Route::get('/dashboard', [RouteController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/about', [RouteController::class, 'about'])->name('about');
 

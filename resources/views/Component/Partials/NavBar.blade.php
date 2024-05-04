@@ -12,9 +12,9 @@
             <a href="{{ route('about') }}" class="nav-item nav-link">A propos</a>
             <a href="{{ route('actualite') }}" class="nav-item nav-link">Actualités</a>
             <a href="{{ route('pre_registration') }}" class="nav-item nav-link">Pré-inscription</a>
-            <a href="blog.html" class="nav-item nav-link">Blog</a>
+
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Nos Filières</a>
                 <div class="dropdown-menu m-0">
                     <a href="destination.html" class="dropdown-item">Destination</a>
                     <a href="tour.html" class="dropdown-item">Explore Tour</a>
@@ -27,6 +27,6 @@
             </div>
             <a href="contact.html" class="nav-item nav-link">Contact</a>
         </div>
-        <a href="" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Connexion</a>
+        <a href="{{ route('dashboard') }}" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Connexion</a>
     </div>
 </nav>

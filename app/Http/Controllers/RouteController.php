@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 
@@ -49,6 +49,11 @@ class RouteController extends Controller
         return view('PreInscription');
     }
 
+
+    public function dashboard()
+    {
+        return view('admin.dash');
+    }
 
     public function notfound()
     {
