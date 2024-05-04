@@ -6,20 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Plus Admin</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="{{ URL::asset('public/dashboard/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('public/dashboard/assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('public/dashboard/assets/vendors/css/vendor.bundle.base.css') }}">
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/vendors/css/vendor.bundle.base.css') }}">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="{{ URL::asset('public/dashboard/assets/vendors/jquery-bar-rating/css-stars.css') }}" />
-    <link rel="stylesheet" href="{{ URL::asset('public/dashboard/assets/vendors/font-awesome/css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/vendors/jquery-bar-rating/css-stars.css') }}" />
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/vendors/font-awesome/css/font-awesome.min.css') }}" />
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="{{ URL::asset('public/dashboard/assets/css/demo_1/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/css/demo_1/style.css') }}" />
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{ URL::asset('public/dashboard/assets/images/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('dashboard/assets/images/favicon.png') }}" />
+
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/css/chosen/chosen.css') }}" />
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/css/chosen/prism.css') }}" />
+    <script src="{{ asset('dashboard/assets/js/jquery.js') }}"></script>
+    <script defer src="{{ asset('dashboard/assets/js/chosen/chosen.jquery.js') }}"></script>
+    <script defer src="{{ asset('dashboard/assets/js/chosen/prism.js') }}"></script>
+    <script defer src="{{ asset('dashboard/assets/js/chosen/init.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/js/alert.js') }}"></script>
+
   </head>
   <body>
     <div class="container-scroller">
@@ -29,7 +38,7 @@
           <li class="nav-item nav-profile border-bottom">
             <a href="#" class="nav-link flex-column">
               <div class="nav-profile-image">
-                <img src="{{ URL::asset('public/dashboard/assets/images/profil.png') }}" alt="profile" />
+                <img src="{{ asset('dashboard/assets/images/profil.png') }}" alt="profile" />
                 <!--change to offline or busy as needed-->
               </div>
               <div class="nav-profile-text d-flex ml-0 mb-3 flex-column">
@@ -67,9 +76,50 @@
           </li>
          
           <li class="nav-item">
-            <a class="nav-link" href="pages/tables/basic-table.html">
+            <a class="nav-link" href="{{ route('ecoles.index') }}">
               <i class="mdi mdi-table-large menu-icon"></i>
-              <span class="menu-title">Tables</span>
+              <span class="menu-title">Ecoles</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('cycles.index') }}">
+              <i class="mdi mdi-table-large menu-icon"></i>
+              <span class="menu-title">Cycles</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('filieres.index') }}">
+              <i class="mdi mdi-table-large menu-icon"></i>
+              <span class="menu-title">Filières</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('specialites.index') }}">
+              <i class="mdi mdi-table-large menu-icon"></i>
+              <span class="menu-title">Spécialitées</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('modules.index') }}">
+              <i class="mdi mdi-table-large menu-icon"></i>
+              <span class="menu-title">Modules</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('notes.index') }}">
+              <i class="mdi mdi-table-large menu-icon"></i>
+              <span class="menu-title">Ajout / Modification des notes</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('notes.filtreReleve') }}">
+              <i class="mdi mdi-table-large menu-icon"></i>
+              <span class="menu-title">Réléve de notes</span>
             </a>
           </li>
         
@@ -107,7 +157,7 @@
               <span class="mdi mdi-chevron-double-left"></span>
             </button>
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-              <a class="navbar-brand brand-logo-mini" href="#"><img src="{{ URL::asset('public/dashboard/assets/images/logo-mini.svg') }}" alt="logo" /></a>
+              <a class="navbar-brand brand-logo-mini" href="#"><img src="{{ asset('dashboard/assets/images/logo-mini.svg') }}" alt="logo" /></a>
             </div>
 
             <ul class="navbar-nav navbar-nav-right">
@@ -172,28 +222,56 @@
       </div>
       <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="{{ URL::asset('public/dashboard/assets/vendors/js/vendor.bundle.base.js') }}"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="{{ URL::asset('public/dashboard/assets/vendors/jquery-bar-rating/jquery.barrating.min.js') }}"></script>
-    <script src="{{ URL::asset('public/dashboard/assets/vendors/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ URL::asset('public/dashboard/assets/vendors/flot/jquery.flot.js') }}"></script>
-    <script src="{{ URL::asset('public/dashboard/assets/vendors/flot/jquery.flot.resize.js') }}"></script>
-    <script src="{{ URL::asset('public/dashboard/assets/vendors/flot/jquery.flot.categories.js') }}"></script>
-    <script src="{{ URL::asset('public/dashboard/assets/vendors/flot/jquery.flot.fillbetween.js') }}"></script>
-    <script src="{{ URL::asset('public/dashboard/assets/vendors/flot/jquery.flot.stack.js') }}"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="{{ URL::asset('public/dashboard/assets/js/off-canvas.js') }}"></script>
-    <script src="{{ URL::asset('public/dashboard/assets/js/hoverable-collapse.js') }}"></script>
-    <script src="{{ URL::asset('public/dashboard/assets/js/misc.js') }}"></script>
-    <script src="{{ URL::asset('public/dashboard/assets/js/settings.js') }}"></script>
-    <script src="{{ URL::asset('public/dashboard/assets/js/todolist.js') }}"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="{{ URL::asset('public/dashboard/assets/js/dashboard.js') }}"></script>
-    <!-- End custom js for this page -->
+    
+    @if (Session::has('message'))
+        <script>
+            swal({
+                title: 'Message',
+                text: "{{ session('message') }}",
+                icon: "{{ session('type') }}",
+                buttons: {
+                    cancel: {
+                        text: "Cancel",
+                        value: null,
+                        visible: false,
+                        className: "",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Ok",
+                        value: null,
+                        visible: true,
+                        className: "bt new align-center",
+                        closeModal: true
+                    }
+                },
+                // content: {
+                //     element: "input",
+                //     attributes: {
+                //         placeholder: "Type your password",
+                //         type: "password",
+                //     }
+                // },
+                // closeOnClickOutside: false,
+                // closeOnEsc: false,
+                timer: 10000,
+            })
+        </script>
+    @endif
+
+    <script src="{{ asset('dashboard/assets/vendors/js/vendor.bundle.base.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/vendors/jquery-bar-rating/jquery.barrating.min.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/vendors/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/vendors/flot/jquery.flot.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/vendors/flot/jquery.flot.resize.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/vendors/flot/jquery.flot.categories.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/vendors/flot/jquery.flot.fillbetween.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/vendors/flot/jquery.flot.stack.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/js/off-canvas.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/js/hoverable-collapse.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/js/misc.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/js/settings.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/js/todolist.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/js/dashboard.js') }}"></script>
   </body>
 </html>

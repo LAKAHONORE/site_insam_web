@@ -1,7 +1,5 @@
-@extends('Dashboard')
-
+@extends('dashboard')
 @section('content')
-
             <!-- table row starts here -->
             <div class="row">
                 <div class="col-xl-4 grid-margin">

@@ -9,16 +9,15 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('ecoles', function (Blueprint $table) {
+        Schema::create('niveaux', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
-            $table->string('intitule');
-            $table->string('slug')->nullable();
+            $table->integer('intitule');
             $table->timestamps();
         });
     }
+
     public function down(): void
     {
-        Schema::dropIfExists('ecoles');
+        Schema::dropIfExists('niveaux');
     }
 };

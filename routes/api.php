@@ -15,8 +15,10 @@ use App\Http\Controllers\Api\EcoleController;
 |
 */
 
-Route::get('/ecoles', [EcoleController::class, 'index'])->name('index');
 
+Route::prefix('/ecoles')->name('users.')->group(function(){
+    Route::get('/', [EcoleController::class, 'index'])->name('index');
+});
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

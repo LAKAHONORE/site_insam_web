@@ -27,6 +27,6 @@
             </div>
             <a href="contact.html" class="nav-item nav-link">Contact</a>
         </div>
-        <a href="{{ route('dashboard') }}" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Connexion</a>
+        <a href="{{ route('connexion') }}" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Connexion</a>
     </div>
 </nav>

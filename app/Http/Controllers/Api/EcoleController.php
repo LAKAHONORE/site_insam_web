@@ -11,10 +11,6 @@ class EcoleController extends Controller
     public function index()
     {
         $ecoles = Ecole::all();
-
-        return response()->json([
-            'ecoles'=>$ecoles,
-            'statut'=>200
-        ]);
+        return response()->json($ecoles, 200);
     }
 }

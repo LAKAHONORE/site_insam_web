@@ -9,16 +9,17 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('ecoles', function (Blueprint $table) {
+        Schema::create('filieres', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('cycle_id')->constrained();
             $table->string('code');
             $table->string('intitule');
-            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }
+
     public function down(): void
     {
-        Schema::dropIfExists('ecoles');
+        Schema::dropIfExists('filieres');
     }
 };

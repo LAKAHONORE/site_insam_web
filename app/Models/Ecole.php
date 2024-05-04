@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Ecole extends Model
 {
@@ -25,7 +27,7 @@ class Ecole extends Model
         return $this->hasMany(jobSeeker::class);
     }*/
     
-    public function generateSlug()
+    public static function generateSlug()
     {
         $this->slug = Str::slug($this->intitule.'-'.Hash::make($this->id));
     }

@@ -33,9 +33,14 @@ class RouteController extends Controller
     }
 
 
+    public function connexion()
+    {
+        return view('Auth');
+    }
+
     public function about()
     {
-        return view('about');
+        return view('About');
     }
 
 
