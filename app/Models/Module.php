@@ -9,4 +9,8 @@ class Module extends Model
 {
     use HasFactory;
     protected $fillable = ['code', 'intitule', 'categorie'];
+
+    public function matieres() {
+        return $this->hasMany(Matiere::class);
+    }
 }

@@ -28,8 +28,8 @@
                                     <td>{{ ucwords($inscription->nom) }}</td>
                                     <td>{{ ucwords($inscription->prenom) }}</td>
                                     <td>
-                                        <a href="{{ route('notes.releve', [$specialite->id, $niveau->id, $inscription->etudiant_id]) }}">Rélevé</a>&nbsp;&nbsp;
-                                        <a href="">Pv</a>
+                                        <a href="{{ route('notes.releve', [$specialite->id, $niveau->id, $semestre, $inscription->etudiant_id]) }}">Rélevé</a>&nbsp;&nbsp;
+                                        <a href="{{ route('notes.pv', [$specialite->id, $niveau->id, $semestre, $inscription->etudiant_id]) }}">pv</a>&nbsp;&nbsp;
                                     </td>
                                 </tr>
                             @empty

@@ -20,7 +20,7 @@
                             @if ($cycles->count() > 0)
                                     <option value="" selected disabled>-- Selectionnez l'école --</option>
                                     @foreach ($cycles as $cycle)
-                                        <option value="{{ $cycle->id }}">{{ ucfirst($cycle->intitule) }}</option>
+                                        <option value="{{ $cycle->id }}">{{ strtoupper($cycle->code) }}</option>
                                     @endforeach
                                 @else
                                     <option value="">-- Aucun cycle en base de donnée --</option>

@@ -18,7 +18,7 @@
                                     @if (!$modules->isEmpty())
                                         <option value="">-- Sélectionnez le module --</option>
                                         @foreach ($modules as $module)
-                                            <option value="{{ $module->id }}">{{ strtoupper($module->code) .' - '.ucfirst($module->intitule) }}</option>
+                                            <option value="{{ $module->id }}">{{ strtoupper($module->code) .' - '.strtoupper($module->intitule) }}</option>
                                         @endforeach
                                     @else
                                         <option value="" selected disabled>Aucun module en base de donnée</option>

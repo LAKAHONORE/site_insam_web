@@ -8,7 +8,6 @@
             @php
                 $title ='Liste des matières de la spécialitée '. ucwords($specialite->intitule) .' - Niveau '. $niveau->intitule .' - '. ucfirst($specialite->periode);
             @endphp
-
             <div class="row">
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
@@ -31,15 +30,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <tr>
+                                            <td colspan='8' style="font-weight: 700">
+                                                Total Credit : {{ $specialite->matieres($niveau->id)->sum('credit') }}&nbsp;&nbsp;&nbsp;
+                                                Total Heure : {{ $specialite->matieres($niveau->id)->sum('heure') }}
+                                            </td>
+                                        </tr>
                                         @forelse ($specialite->matieres($niveau->id) as $i => $matiere)
                                             <tr class="element">
                                                 <td>{{ $i+= 1 }}</td>
                                                 <td class="data">{{ strtoupper($matiere->code) }}</td>
-                                                <td class="data">{{ ucfirst($matiere->intitule) }}</td>
+                                                <td class="data">{{ strtoupper($matiere->intitule) }}</td>
                                                 <td class="data">{{ $matiere->credit }}</td>
                                                 <td class="data">{{ $matiere->heure }}</td>
                                                 <td class="data">{{ $matiere->semestre }}</td>
-                                                <td class="data">{{ strtoupper($matiere->module->code).' - '.ucfirst($matiere->module->intitule) }}</td>
+                                                <td class="data">{{ strtoupper($matiere->module->code).' - '.strtoupper($matiere->module->intitule) }}</td>
                                                 <td>
                                                     <a href="{{ route('matieres.edit', $matiere->id) }}" class="fa fa-pencil" title="Modifier"></a>&nbsp;
                                                 </td>

@@ -10,7 +10,7 @@
                 <div class="col-5">
                     @foreach ($niveaux->where('intitule', '<', 3) as $niveau)
                         <div class="card" style="padding-left: 10px">
-                            <span class="block" style="font-size: 2em">10</span>
+                            <span class="block" style="font-size: 2em">{{ $specialite->inscriptions($niveau->id)->count() }}</span>
                             <p class='row' style="padding-left: 25px">
                                 <span class="col">Étudiants au Niveau {{ $niveau->intitule }}</span>
                                 <a class="col" style="text-align: end" href="{{ route('option',['etudiants', $specialite->id, $niveau->id]) }}">Détails <i class="bi bi-arrow-right" style="position: relative;top: 2px;"></i></a>
@@ -24,7 +24,7 @@
                 <div class="col-5">
                     @foreach ($niveaux->where('intitule', '<', 3) as $niveau)
                         <div class="card">
-                            <span class="block" style="font-size: 2em">10</span>
+                            <span class="block" style="font-size: 2em">{{ $specialite->matieres($niveau->id)->count() }}</span>
                             <p class='row' style="padding-left: 25px">
                                 <span class="col">Matières au Niveau {{ $niveau->intitule }}</span>
                                 <a class="col" style="text-align: end" href="{{ route('option',['matieres', $specialite->id, $niveau->id]) }}">Détails <i class="bi bi-arrow-right" style="position: relative;top: 2px;"></i></a>
@@ -39,7 +39,7 @@
                 {{-- Etudiants --}}
                 <div class="col-5">
                     <div class="card">
-                        <span class="block" style="font-size: 2em">10</span>
+                        <span class="block" style="font-size: 2em">{{ $specialite->inscriptions($niveau->id)->count() }}</span>
                         <p class='row' style="padding-left: 25px">
                             <span class="col">Étudiants au Niveau 3</span>
                             <a class="col" style="text-align: end" href="{{ route('option',['etudiants', $specialite->id, $niveaux->where('intitule', 3)[2]->id]) }}">Détails <i class="bi bi-arrow-right" style="position: relative;top: 2px;"></i></a>
@@ -51,7 +51,7 @@
                 {{-- Matieres --}}
                 <div class="col-5">
                     <div class="card">
-                        <span class="block" style="font-size: 2em">10</span>
+                        <span class="block" style="font-size: 2em">{{ $specialite->matieres($niveau->id)->count() }}</span>
                         <p class='row' style="padding-left: 25px">
                             <span class="col">Matières au Niveau 3</span>
                             <a class="col" style="text-align: end" href="{{ route('option',['matieres', $specialite->id, $niveaux->where('intitule', 3)[2]->id]) }}">Détails <i class="bi bi-arrow-right" style="position: relative;top: 2px;"></i></a>
@@ -66,7 +66,7 @@
                 <div class="col-5">
                     @foreach ($niveaux->where('intitule', '<', 6)->where('intitule', '>', 3) as $niveau)
                         <div class="card">
-                            <span class="block" style="font-size: 2em">10</span>
+                            <span class="block" style="font-size: 2em">{{ $specialite->inscriptions($niveau->id)->count() }}</span>
                             <p class='row' style="padding-left: 25px">
                                 <span class="col">Étudiants au Niveau {{ $niveau->intitule }}</span>
                                 <a class="col" style="text-align: end" href="{{ route('option',['etudiants', $specialite->id, $niveau->id]) }}">Détails <i class="bi bi-arrow-right" style="position: relative;top: 2px;"></i></a>
@@ -80,7 +80,7 @@
                 <div class="col-5">
                     @foreach ($niveaux->where('intitule', '<', 6)->where('intitule', '>', 3) as $niveau)
                         <div class="card">
-                            <span class="block" style="font-size: 2em">10</span>
+                            <span class="block" style="font-size: 2em">{{ $specialite->matieres($niveau->id)->count() }}</span>
                             <p class='row' style="padding-left: 25px">
                                 <span class="col">Matières au Niveau {{ $niveau->intitule }}</span>
                                 <a class="col" style="text-align: end" href="{{ route('option',['matieres', $specialite->id, $niveau->id]) }}">Détails <i class="bi bi-arrow-right" style="position: relative;top: 2px;"></i></a>
@@ -95,7 +95,7 @@
                 {{-- Etudiants --}}
                 <div class="col-5">
                     <div class="card">
-                        <span class="block" style="font-size: 2em">10</span>
+                        <span class="block" style="font-size: 2em">{{ $specialite->inscriptions($niveau->id)->count() }}</span>
                         <p class='row' style="padding-left: 25px">
                             <span class="col">Étudiants au Niveau 6</span>
                             &nbsp;&nbsp;
@@ -107,7 +107,7 @@
                 {{-- Matieres --}}
                 <div class="col-5">
                     <div class="card">
-                        <span class="block" style="font-size: 2em">10</span>
+                        <span class="block" style="font-size: 2em">{{ $specialite->matieres($niveau->id)->count() }}</span>
                         <p class='row' style="padding-left: 25px">
                             <span class="col">Matières au Niveau 6</span>
                             &nbsp;&nbsp;

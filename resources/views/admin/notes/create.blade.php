@@ -13,15 +13,16 @@
     <span class="col-3">Semestre: {{ $semestre }}</span>
 </h5>
 <br>
-<div class="row">
-    <div class="col-lg-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped">
+<div class="row" style="width: 100%">
+    <div class="col-12 col-lg-12 grid-margin stretch-card" style="width: 100%">
+        <div class="card" style="width: 100%">
+            <div class="card-body" style="width: 100%">
+                <div class="table-responsive" style="width: 100%">
+                    <table class="table table-striped" style="width: 100%">
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Matricule</th>
                                 <th>Nom</th>
                                 <th>Prenom</th>
                                 <th>Note</th>
@@ -31,9 +32,10 @@
                             @forelse ($specialite->inscriptions($matiere->niveau_id) as $key => $inscription)
                                 <tr>
                                     <td>{{ $key += 1}}</td>
+                                    <td>{{ ucfirst($inscription->matricule) }}</td>
                                     <td>{{ ucwords($inscription->nom) }}</td>
                                     <td>{{ ucwords($inscription->prenom) }}</td>
-                                    <td><input inscription_id="{{ $inscription->id }}" composer_id="{{ $inscription->notes()->where(['matiere_id' => $matiere->id,'examen_id' => $examen->id])->get()[0]->id ?? '0' }}" value="{{ $inscription->notes()->where(['matiere_id' => $matiere->id,'examen_id' => $examen->id])->get()[0]->note ?? '' }}" type="number" min="0" max='20' class="note form-control col-4"></td>
+                                    <td><input inscription_id="{{ $inscription->id }}" composer_id="{{ $inscription->notes()->where(['matiere_id' => $matiere->id,'examen_id' => $examen->id])->get()[0]->id ?? '0' }}" value="{{ $inscription->notes()->where(['matiere_id' => $matiere->id,'examen_id' => $examen->id])->get()[0]->note ?? '' }}" type="number" min="0" max='20' class="note form-control"></td>
                                 </tr>
                             @empty
                                 <tr><td colspan="5" style="text-align: center">Aucun étudiant pour le moment</td></tr>

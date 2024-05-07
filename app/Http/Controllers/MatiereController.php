@@ -20,7 +20,7 @@ class MatiereController extends Controller
         return view('admin.matieres.create',[
             'specialite' => Specialite::find(Request('x')),
             'niveau' => Specialite::find(Request('m')),
-            'modules' => Module::orderBy('intitule')->get(),
+            'modules' => Module::orderBy('code')->get(),
         ]);
     }
 
@@ -74,7 +74,7 @@ class MatiereController extends Controller
         return view('admin.matieres.edit',[
             'specialite' => $matiere->specialite,
             'niveau' =>  $matiere->niveau,
-            'modules' => Module::orderBy('intitule')->get(),
+            'modules' => Module::orderBy('code')->get(),
             'matiere' => $matiere,
         ]);
     }

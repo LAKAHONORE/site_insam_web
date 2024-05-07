@@ -15,7 +15,9 @@ class Etudiant extends Model
         'telephone_pere',  'telephone_mere', 'telephone_personne_a_contacter'
     ];
 
-    public function inscription(int $annee) {
-        return $this->hasOne(Inscription::class)->where('annee_id', $annee);
+    public function inscription(int $annee_id = 0) {
+        return $annee_id == 0 
+        ? $this->hasOne(Inscription::class)->where('annee_id', Annee::active()->id)
+        : $this->hasOne(Inscription::class)->where('annee_id', $annee_id) ;
     }
 }

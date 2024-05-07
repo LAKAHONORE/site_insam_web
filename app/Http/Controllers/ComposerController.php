@@ -7,9 +7,12 @@ use App\Models\Composer;
 use App\Models\Etudiant;
 use App\Models\Examen;
 use App\Models\Matiere;
+use App\Models\Module;
 use App\Models\Niveau;
 use App\Models\Specialite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ComposerController extends Controller
 {
@@ -84,15 +87,40 @@ class ComposerController extends Controller
             'specialite' => Specialite::find($request->specialite_id),
             'niveau' => Niveau::find($request->niveau_id),
             'semestre' => $request->semestre,
-            'semestre' => $request->semestre,
         ]);
     }
 
-    public function releve($specialite_id, $niveau_id, $etudiant_id)
+    public function releve($specialite_id, $niveau_id, $semestre, $etudiant_id)
     {
+        $modules = collect();
+        foreach (Specialite::find($specialite_id)->modules($niveau_id) as $module_id_semestre) {
+            $module = Module::find($module_id_semestre->module_id);
+            $module->semestre = $module_id_semestre->semestre;
+            $modules->push($module);
+        }
+        
         return view('admin.notes.releve',[
             'specialite' => Specialite::find($specialite_id),
             'etudiant' => Etudiant::find($etudiant_id),
+            'modules' => $modules,
+            'semestre' => $semestre,
+        ]);
+    }
+
+    public function pv($specialite_id, $niveau_id, $semestre, $etudiant_id)
+    {
+        $modules = collect();
+        foreach (Specialite::find($specialite_id)->modules($niveau_id) as $module_id_semestre) {
+            $module = Module::find($module_id_semestre->module_id);
+            $module->semestre = $module_id_semestre->semestre;
+            $modules->push($module);
+        }
+        
+        return view('admin.notes.pv',[
+            'specialite' => Specialite::find($specialite_id),
+            'etudiant' => Etudiant::find($etudiant_id),
+            'modules' => $modules,
+            'semestre' => $semestre,
         ]);
     }
 }

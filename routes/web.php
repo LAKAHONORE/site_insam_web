@@ -24,6 +24,7 @@ Route::get('/test', function () {
     return view('admin.dash');
 });
 
+
 Route::get('/table', function () {
     return view('admin.table');
 });
@@ -59,7 +60,8 @@ Route::resource('matieres', MatiereController::class);
 
 Route::get('/notes/filtre-releve',[ComposerController::class, 'filtreReleve'])->name('notes.filtreReleve'); 
 Route::post('/notes/etudiants',[ComposerController::class, 'etudiants'])->name('notes.etudiants');
-Route::get('/notes/releve/{specialite_id}/{niveau_id}/{etudiant_id}',[ComposerController::class, 'releve'])->name('notes.releve');
+Route::get('/notes/releve/{specialite_id}/{niveau_id}/{semestre}/{etudiant_id}',[ComposerController::class, 'releve'])->name('notes.releve');
+Route::get('/notes/pv/{specialite_id}/{niveau_id}/{semestre}/{etudiant_id}',[ComposerController::class, 'pv'])->name('notes.pv');
 Route::resource('notes', ComposerController::class);
 
 Route::resource('etudiants', EtudiantController::class);

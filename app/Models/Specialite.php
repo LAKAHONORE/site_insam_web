@@ -41,4 +41,16 @@ class Specialite extends Model
             'niveau_id' => $niveau_id,
         ])->get();
     }
+
+    public function modules($niveau_id) {
+        return $this->hasMany(Matiere::class)
+        ->where([
+            'annee_id' => Annee::active()->id,
+            'niveau_id' => $niveau_id,
+        ])
+        ->with('module')
+        ->select('module_id', 'semestre')
+        ->distinct('module_id')
+        ->get();
+    }
 }

@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="page-header">
-    <h3 class="page-title">Rélevé de notes</h3>
+    <h3 class="page-title">PV</h3>
 </div>
 <style>
     .mx-bt-6 {
@@ -49,7 +49,7 @@
     }
 </style>
 <div class='text-center' style='border: 0.18rem solid black; padding: 1px'>
-    <div style='font-size: 1.25em; border: 0.18rem solid black; padding: 5px; font-weight: 1000'>RÉLEVÉ DE NOTES (TRANSCRIPT)</div>
+    <div style='font-size: 1.25em; border: 0.18rem solid black; padding: 5px; font-weight: 1000'>PROCES VERBAL (TRANSCRIPT)</div>
 </div>
 <br>
 <div class='line'>

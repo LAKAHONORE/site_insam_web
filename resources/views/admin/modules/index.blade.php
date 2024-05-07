@@ -28,7 +28,7 @@
                                 <tr>
                                     <td>{{ $key += 1}}</td>
                                     <td>{{ strtoupper($module->code) }}</td>
-                                    <td>{{ ucwords($module->intitule) }}</td>
+                                    <td>{{ strtoupper($module->intitule) }}</td>
                                     <td>{{ ucfirst($module->categorie) }}</td>
                                     <td>
                                         <a href="{{ route('modules.edit', $module->id) }}" class="fa fa-pencil" title="Modifier"></a>

@@ -11,7 +11,7 @@ class ModuleController extends Controller
     public function index()
     {
         return view('admin.modules.index', [
-            'modules' => Module::orderBy('id')->get(),
+            'modules' => Module::orderBy('code')->get(),
         ]);
     }
 
