@@ -30,4 +30,5 @@ class Inscription extends Model
         return $this->belongsTo(Annee::class);
     }
 
+
 }

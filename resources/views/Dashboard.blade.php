@@ -28,7 +28,8 @@
     <script defer src="{{ asset('dashboard/assets/js/chosen/prism.js') }}"></script>
     <script defer src="{{ asset('dashboard/assets/js/chosen/init.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/alert.js') }}"></script>
-
+    <script src="{{ asset('dashboard/assets/js/filesaver.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/js/xlsx.js') }}"></script>
   </head>
   <body>
     <div class="container-scroller">
@@ -122,6 +123,20 @@
               <span class="menu-title">Réléve de notes</span>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('notes.filtreMastership') }}">
+              <i class="mdi mdi-table-large menu-icon"></i>
+              <span class="menu-title">Mastership</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('notes.import') }}">
+              <i class="mdi mdi-table-large menu-icon"></i>
+              <span class="menu-title">Import des notes</span>
+            </a>
+          </li>
         
         </ul>
       </nav>
@@ -151,7 +166,7 @@
         </div>
         <!-- partial -->
         <!-- partial:partials/_navbar.html -->
-        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <nav id="navbar" class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
           <div class="navbar-menu-wrapper d-flex align-items-stretch">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
               <span class="mdi mdi-chevron-double-left"></span>

@@ -3,9 +3,11 @@
 @extends('Dashboard')
 @section('content')
 
-<div class="page-header">
+<div id="pageHeader" class="page-header">
     <h3 class="page-title">Rélevé de notes</h3>
 </div>
+<div style="text-align: end"><a id="print" class="btn btn-primary mr-2">Imprimer</a></div>
+
 <style>
     .mx-bt-6 {
         margin-bottom: 12px;
@@ -47,7 +49,68 @@
     .wx-235 {
         width:235px;
     }
+    .ecole * {
+        margin: auto;
+    }
+
+    .ecole div:nth-child(4) {
+        font-size: 17px;
+        padding-bottom: 3px;
+        border-bottom: 4px solid;
+        color: black;
+        width: 280px;
+        margin-bottom: 3px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .ecole div:nth-child(3) {
+        font-size: 16px;
+        padding-bottom: 3px;
+        border-bottom: 4px solid;
+        color: rgb(10, 49, 192);
+        width: 533px;
+        margin-bottom: 3px;
+        text-align: center;
+    }
+
+    .ecole div:nth-child(2) {
+        font-size: 31px;
+        padding-bottom: 0px;
+        border-bottom: 4px solid;
+        color: rgba(255, 0, 0, 0.450);
+        width: 877px;
+        margin-bottom: 3px;
+        font-family: 'cooper black';
+        text-align: center;
+    }
+
+    .ecole div:nth-child(1) {
+        font-weight: bolder;
+        font-size: 37px;
+        padding-bottom: 0px;
+        border-bottom: 4px solid;
+        ;
+        color: rgb(10, 49, 192);
+        width: 1195px;
+        font-family: 'cooper black';
+        text-align: center;
+    }
 </style>
+
+
+<div id="entete">
+    <div style="width:70px;height: 70%;top:132px;left:0px;position:relative;">
+        <img src="{{asset('site/img/logo-insam.png')}}" style="width:90px;height: 60%;">
+    </div>
+    <div class="ecole" id="ecole" style="text-align: end">
+        <div>INSTITUT UNIVERSITAIRE ET STRATEGIQUE DE L'ESTUAIRE</div>
+        <div>Estuary Academic and Strategic Institute <span class="sigle">(IUEs/Insam)</span></div>
+        <div>Sous la tutelle académique des Universités de Buea, Douala et Dschang</div>
+        <div>CAMPUS ANNEXE DE BAFOUSSAM</div>
+    </div>
+</div>
+<br><br>
 <div class='text-center' style='border: 0.18rem solid black; padding: 1px'>
     <div style='font-size: 1.25em; border: 0.18rem solid black; padding: 5px; font-weight: 1000'>RÉLEVÉ DE NOTES (TRANSCRIPT)</div>
 </div>
@@ -100,6 +163,13 @@
     </thead>
     <tbody>
         @if ($semestre == 0)
+            <style>
+                @media print {
+                    html,body {
+                        zoom: 80%;
+                    }
+                }
+            </style>
             @php
                 $credit_fon_1 = $credit_pro_1 = $credit_tra_1 = $moy_s1 = 0;
                 $credit_fon_2 = $credit_pro_2 = $credit_tra_2 = $moy_s2 = 0;
@@ -1276,4 +1346,91 @@
         
     </div>
 </div>
+
+<div id="minsup">
+    <div style="border-top-style: dotted;border-top:3px stripped black;padding-top:10px;margin: auto;text-align:center;margin-top: 10px;" id="minsup">
+        <div style="font-size: 11px;margin: auto;margin-bottom: 3px;width:600px;text-align:center;">Arrété
+            d'autorisation numéro
+            05/0028/MINESUP du 12/01/2005 de Monsieur le Ministre de l'Enseignement Supérieur
+        </div>
+        <div style="font-size: 11px;width:520px;margin: auto;margin-bottom: 3px;text-align:center;">Agrément n°
+            08/0135/%INESUP du
+            06 mai 2008 de
+            Monsieur le Ministre
+            de
+            l'Enseignement Supérieur
+        </div>
+        <div
+            style="font-size: 11px;width:500px;margin: auto;text-align:center;margin-bottom: 5px;">
+            Arrêté de
+            transformation de
+            l'INSAM en IUEs
+            n° 12/0365/MINESUP du
+            12/08/2012.</div>
+        <div style="font-size: 11px;width: 645px;margin: auto;text-align:center;">
+            <span style="margin-right: 4px;">BP : 4100 Douala</span>
+            <span style="margin-right: 4px;">Tél/Fax : 33 40 68 03</span>
+            <span style="margin-right: 4px;">Cell : 96 16 20 16 / 70 86 19 65.</span>
+            <span style="margin-right: 4px;">E-mail : insam@insam-univ.net</span>
+            <span style="margin-right: 4px;">Site : insam-univ.net</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#print').click(function(e){
+        e.preventDefault();
+
+        $('#sidebar').hide();
+        $('.navbar-brand').hide();
+        $('.navbar-toggler').hide();
+        $('.navbar-nav').hide(); 
+        $('.navbar-menu-wrapper').css({
+            'height' : '1px'
+        }); 
+        $('.footer').hide();
+        $('#navbar').hide();
+
+        $('#pageHeader').children().hide();
+        $('#pageHeader').hide();
+        $('#settings-trigger').hide();
+
+        $('#minsup').css({
+            'position': 'fixed',
+            'top': '95.9%',
+            'width': '100%'
+        });
+
+        $('#entete').css({
+            'marginTop': '-175px',
+        });
+
+        $('#ecole div:nth-child(1)').css({
+            'width': '1395px',
+            'fontSize': '43px',
+        });
+
+        $('#ecole div:nth-child(1)').css({
+            'width': '1395px',
+            'fontSize': '43px',
+        });
+        $('#ecole div:nth-child(2)').css({
+            'width': '1077px',
+            'fontSize': '38px',
+        });
+        $('#ecole div:nth-child(3)').css({
+            'width': '671px',
+            'fontSize': '20px',
+        });
+        $('#ecole div:nth-child(4)').css({
+            'width': '280px',
+            'fontSize': '17',
+        });
+        
+        $(this).hide();
+        
+        window.print();
+        location.reload();
+    })
+</script>
 @endsection

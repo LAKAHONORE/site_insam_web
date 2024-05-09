@@ -3,19 +3,60 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cycle;
-use App\Models\Composer;
-use App\Models\Etudiant;
 use App\Models\Examen;
-use App\Models\Matiere;
 use App\Models\Module;
 use App\Models\Niveau;
+use App\Models\Matiere;
+use App\Models\Composer;
+use App\Models\Etudiant;
 use App\Models\Specialite;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
 
 class ComposerController extends Controller
 {
+
+    public function import()
+    {
+        return view('admin.notes.import');
+    }
+
+    public function save(Request $request)
+    {
+        $path = $request->file->move(public_path(), $request->file->hashName());
+        $spreadsheet = IOFactory::load($path);
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $datas = [];
+
+        foreach ($sheet->getRowIterator() as $i => $row) {
+            $data = [];
+            if($i > 1) {
+                foreach ($row->getCellIterator() as $cell)  $data[] = $cell->getValue() ?? ''; 
+                $datas[] = $data;
+            }
+        }
+
+        foreach ($datas as $data) {
+            if(intval($data[0]) !== 0) {
+                Composer::find(intval($data[0]))->update(['note' => doubleval($data[6])]);
+            }
+            else {
+                Composer::create([
+                    'inscription_id' => intval($data[1]),
+                    'examen_id' => intval($data[2]),
+                    'matiere_id' => intval($data[3]),
+                    'note' => doubleval($data[6])
+                ]);
+            }
+        }
+
+        return back()->with([
+            'message' => 'Note importé avec succès !',
+            'type' => 'success'
+        ]);
+    }
 
     public function index()
     {
@@ -81,6 +122,13 @@ class ComposerController extends Controller
         ]);
     }
 
+    public function filtreMastership()
+    {
+        return view('admin.notes.filtre-mastership',[
+            'cycles' => Cycle::all(),
+        ]);
+    }
+
     public function etudiants(Request $request)
     {
         return view('admin.notes.etudiants',[
@@ -121,6 +169,15 @@ class ComposerController extends Controller
             'etudiant' => Etudiant::find($etudiant_id),
             'modules' => $modules,
             'semestre' => $semestre,
+        ]);
+    }
+
+    public function mastership(Request $request)
+    {
+        return view('admin.notes.mastership',[
+            'specialite' => Specialite::find($request->specialite_id),
+            'niveau' => Niveau::find($request->niveau_id),
+            'semestre' => $request->semestre,
         ]);
     }
 }

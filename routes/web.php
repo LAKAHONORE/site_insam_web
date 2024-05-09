@@ -62,6 +62,14 @@ Route::get('/notes/filtre-releve',[ComposerController::class, 'filtreReleve'])->
 Route::post('/notes/etudiants',[ComposerController::class, 'etudiants'])->name('notes.etudiants');
 Route::get('/notes/releve/{specialite_id}/{niveau_id}/{semestre}/{etudiant_id}',[ComposerController::class, 'releve'])->name('notes.releve');
 Route::get('/notes/pv/{specialite_id}/{niveau_id}/{semestre}/{etudiant_id}',[ComposerController::class, 'pv'])->name('notes.pv');
+
+Route::get('/notes/import',[ComposerController::class, 'import'])->name('notes.import'); 
+Route::post('/notes/save',[ComposerController::class, 'save'])->name('notes.save'); 
+
+Route::get('/notes/filtre-mastership',[ComposerController::class, 'filtreMastership'])->name('notes.filtreMastership'); 
+Route::post('/notes/mastership',[ComposerController::class, 'mastership'])->name('notes.mastership');
+
+
 Route::resource('notes', ComposerController::class);
 
 Route::resource('etudiants', EtudiantController::class);
